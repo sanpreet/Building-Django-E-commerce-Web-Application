@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script src= "http://code.jquery.com/jquery-2.1.1.js"> </script>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+		<nav class = "navbar navbar-default navbar-fixed-top" role ="navigation">
+		<ul class = "nav navbar-nav navbar-left">
+			<li><a class="navbar-brand" href="/">Home</a></li>
+				<li><a href="/admin-login/">Admin Login</a></li>
+			</ul>
+		<ul class = "nav navbar-nav navbar-right">
+			<li><a class="navbar-brand" href="cart/">Cart <b>({{cart_size}} items)</b></a></li>
+			<li><a href = "checkout"> Checkout!</a></li>
+		</ul>
+	</nav>
+	<br>
+	<br>
+	<div class = "page-header" style="text-align:center">
+
+		<h2>MyStore <br> <br> <small>The place to shop</small></h2>
+	</div>
+	<style type = "text/css">
+	.centerdv
+	{
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+	}
+
+</style>
+<div class ="jumbotron centerdv">
+	<h2>Order is completed!!. Thanks for purchasing from here</h2>
+<!-- Once the order is complete the user can go to the main page and cart is shown as empty. This is important to empty the code once the order is purchased. For coding and every function please approach to the views.py file. 	 -->
+    <button class = "btn btn-success btn-lg" onclick ="window.location='/';">Return to main store page</button>
+</div>
+</body>
+</html>

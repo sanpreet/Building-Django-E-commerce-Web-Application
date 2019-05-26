@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from store_app.models import Products, order_details
-
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # this function is used to store the cart items which user have added.
 def cartitems(cart):
@@ -110,5 +111,23 @@ def completeorder(request):
     order.items = generateItemlist(cart)
     request.session['cart']=list()
     return render(request, "complete_order.html", None)
-    
 
+def adminLogin(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("admin")
+        else:
+            return render (request, "admin_login.html",{'login':False})
+    
+    return render(request, "admin_login.html", None)   
+             
+@login_required
+def adminDashboard(request):
+    orders = order_details.objects.all()
+    ctx= {'orders':orders}
+    return render(request, "admin_panel.html", ctx)
+    

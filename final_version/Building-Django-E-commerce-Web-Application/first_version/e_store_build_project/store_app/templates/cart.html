@@ -1,0 +1,64 @@
+<html>
+    <body>
+      {% extends 'navbar.html' %}
+      {% block content %}
+
+	<br>
+	<br>
+<!--this is the division which lets the user to know what they can do here. In simple words some words to let the people to know what they can find here. -->
+	<div class = "page-header" style="text-align:center">
+		<h2>MyStore <br> <br> <small>The place to shop</small></h2>
+	</div>
+
+<!-- css which is applied to the division container well. css makes the visualization of content in a particular vision very handy and effective. -->
+<style type = "text/css">
+	.centerdv
+	{
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+	}
+	.imgscal
+	{
+		max-width:64;
+		max-height:64;
+	}
+	</style>
+
+<div class = "container centerdv well ">
+			<div>
+<!-- This will display the total bill while some one will add the items to the cart. Code for it is well mentioned in the file views.py as pricecart(cart)				 -->
+					<h3>Total Price: <br> <br><span class="label label-success">{{total_price}}</span></h3>
+			</div>
+			<br>
+
+<!-- Items contained in the cart are iterated here so that each item which is added by you will be displayed to you.Along with the name of the item, its description as well as the image is also displayed. Please remember that session holds all the information and information is retrieved from there.			 -->
+			{% for item in cart_items %}
+
+			<div class="media">
+			<a class="pull-left" href="#">
+			    <img class="media-object imgscal" src={{item.imagelink}} alt="..."/>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading">{{item.name}}</h4>
+			    {{item.description}}
+			    <span class="badge pull-right">{{item.price}}</span>
+			  </div>
+			  <form method = "post" action = "remove/">
+			  	{% csrf_token %}
+			  	<input type="hidden" name="obj_id" value={{item.id}} />
+			  <input type="submit" value = "Remove" class = "btn btn-danger pull-right">
+			</form>
+			</div>
+<!-- Loop is end here!!!			 -->
+			{% endfor %}
+
+<!--
+Since one has seen all the items which he/she has added to the cart. Now it is the time to complete the order which means to move to the checkout where one will fill his or her information to make the order successfully.Oneclick will take you to the checkout which is well mentioned in the navbar. -->
+
+			<button class = "btn btn-primary btn-lg" onclick = "window.location = 'checkout/';">Checkout</button>
+	</div>
+	{% endblock %}
+</body>
+</html>

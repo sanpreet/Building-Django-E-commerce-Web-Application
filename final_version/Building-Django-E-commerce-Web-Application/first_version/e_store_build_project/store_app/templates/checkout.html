@@ -1,0 +1,63 @@
+<html>
+    <body>
+
+      {% extends 'navbar.html' %}
+      {% block content %}
+
+<br>
+<br>
+<div class = "page-header" style="text-align:center">
+
+		<h2>MyStore <br> <br> <small>The place to shop</small></h2>
+	</div>
+	<style type = "text/css">
+	.centerdv
+	{
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+	}
+</style>
+
+<div class = "container centerdv">
+        <h3>Total Price: <br> <br><span class="label label-success">{{total_price}}</span></h3>
+
+<div class ="well">
+<!-- In the html file cart.html one is redirected to the checkout page. Here details of the person is filled so that he can place the order. Along with the details payment details are also filled so that payment is done in order to buy the products. Once person click on the Complete Orde button he/she will be subjected to the complete page whose coding you can see the views.py file function Complete Order. I hope these comments helps some one understand the code in better sense. A special thanks to udemy which made my concepts clear about the ecommerce building using django framework.   -->
+
+<form method = "post" action="complete/" class= "centerdv">
+{% csrf_token %}
+<h4> Billing Information for the checkout</h4>
+<b>First Name:</b>
+
+<!-- Remember the name in each of the input type will be used to store these values in the database. For knowing about the tables in the database, please see the models.py file. -->
+<input type="text" name="firstname" class= "form-control">
+<br>
+<b>Last Name:</b>
+<input type="text" name="lastname" class= "form-control">
+<br>
+<b>Address:</b>
+<input type="text" name="address" class= "form-control">
+<br>
+<b>City:</b>
+<input type="text" name="city" class= "form-control">
+<br>
+<h4>Payment Information</h4>
+<b>Payment Type</b>
+<input type="radio" name="payment" value = "debit-card"> debit-card
+<br>
+<input type="radio" name="payment" value = "debit-card"> credit-card
+<br>
+<input type="radio" name="payment" value = "paypal"> paypal
+<br>
+<b>Paypal Email</b>
+<input type="text" class="form-control" name="payment_data">
+<br>
+<input type = "submit" value = "Complete Order" class = "btn btn-success">
+</form>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

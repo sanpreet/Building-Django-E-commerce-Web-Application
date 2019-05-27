@@ -1,0 +1,53 @@
+<html>
+    <body>
+      {% extends 'navbar.html' %}
+      {% block content %}
+
+
+    <br>
+    <br>
+    <div class= "page-header" style="text-align:center">
+     <h2>MyStore</h2>
+    </div>
+<style type = "text/css">
+
+.centerdv
+	{
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+	}
+
+</style>
+<h3 style = "text-align:center">Orders</h3>
+
+<div class = "container centerdv">
+  {% for order in orders %}
+  {{order}}
+  <div class ="well">
+    <b>Name:</b>
+    <br>
+    {{order.first_name}}
+    {{order.last_name}}
+    <br>
+    <b>Address:</b>
+    {{order.address}}
+    {{order.city}}
+    <br>
+    <b>Payment Information</b>
+    <br>
+    {{order.payment_method}}
+    {{order.payment_data}}
+    <br>
+    <b>Order Items</b>
+    <br>
+    {{order.items}}
+    <br>
+
+   </div>
+   {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

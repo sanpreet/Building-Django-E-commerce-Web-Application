@@ -1,0 +1,46 @@
+<html>
+    <body>
+
+      {% extends 'navbar.html' %}
+      {% block content %}
+
+    <br>
+    <br>
+    <div class= "page-header" style="text-align:center">
+            <h2>MyStore <br> <br> <small>The place to shop</small></h2>
+    </div>
+
+ <!-- If one look carefully at the models, class for the products was created and then object is created to add the product to the database. In the views.py file, data for the product is retrieved which i will render to the web. Loop is iterated to display the product at the frontend so that users can purchase it. Along with the product css is applied so that products can be seen more effectively on the web. This is a small demo so only small effort is done to make the products look more effective. -->
+
+    <div class ="row">
+        {% for product in store_items %}
+        <div class="col-md-4 well" style="text-align:center">
+        <b>{{product.name}}</b>
+        <br>
+        <p>{{product.description}}</p>
+        <br>
+        <br>
+        <img src={{product.imagelink}} style="max-width:200px">
+        <br>
+        <br>
+        <span class ="label label-primary">{{product.price}}</span>
+        <br>
+        <br>
+        <br>
+
+        <!-- When user will click on the Add to cart button item will be added to the cart. please see the function catalog(request) in views.py for more details.
+        I hope users are familiar with post and get method. Session stores the user_id so taking this in point, product.id is stored in the cart and care is taken that session does not expire. -->
+
+        <form method="post">
+
+        {% csrf_token %}
+        <input type="submit" value="Add to cart!" class ="btn btn-success">
+        <input type="hidden" name="obj_id" value={{product.id}}>
+        </form>
+
+        {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+    </body>
+</html>

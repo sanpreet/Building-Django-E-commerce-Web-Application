@@ -18,15 +18,27 @@ Special thanks to Udemy Course "Projects in Django and Python" taught by Eduonix
  <ul>
   <li> Once the details are filled properly, you will be taken to the next page which tells that order is complete. Here you have the option to return to the main page.</li></ul>  
 
-![IMAGE_3](https://user-images.githubusercontent.com/3431730/58117438-31539300-7c1c-11e9-9d08-9b46e8269142.png)  
+![IMAGE_3](https://user-images.githubusercontent.com/3431730/58117438-31539300-7c1c-11e9-9d08-9b46e8269142.png)   
 
+<ul>
+  <li> Admin Panel is added so that superuser can know the progress of the status which are being placed. Please see the below screenshot for more details.</li></ul>  
+  
+  
+  ![admin_panel](https://user-images.githubusercontent.com/3431730/58436856-028a6080-80e5-11e9-8d81-e62b67632d01.png)
 
+  
 ## How to run this code  
 <ol>
   <li> Download the respository by using the command git clone https://github.com/sanpreet/Building-Django-E-commerce-Web-Application.git</li>
   <li> Create the virtual environment using the command <b>virtualenv --python python3 **name of environment**</b>. I hope virtualenv is installed in your system. If it is not installed, please install it before running the above command by typing <b>sudo apt-get install virtualenv</b>.</li>
   <li> Please go inside the repository and search for requirements.txt file. It contains the requirements for running the project. Please do install them by typing <b><em>pip3 install -r requirements.txt</b></em.</li>
  <li> Run <b>python3 manage.py runserver</b> and go to the url it will provide you.</li></ol>  
+    
+## What is new in final version  
+
+<ol>
+  <li> Navbar is being used which is inherited by all the templates. Please compare the previous version (first version) template with the final version template. You will see the difference.</li>
+  <li> It makes the code more clean and there is no need to write navbar for each of the template. Just create a single file which is being inherited by all the .html files.</li></ol>
   
 ### Thanks for Reading the ReadMe File  
   

@@ -109,6 +109,7 @@ def completeorder(request):
     order.payment_method = request.POST.get('payment')
     order.payment_data = request.POST.get('payment_data')
     order.items = generateItemlist(cart)
+    order.save()
     request.session['cart']=list()
     return render(request, "complete_order.html", None)
 
